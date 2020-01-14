@@ -9,6 +9,8 @@
   |model[3,1]|model[3,2]|model[3,3]|
 
 */
+var wins = 0;
+var losses = 0;
 var victory = false;
 var compVictory = false;
 var model = [
@@ -59,10 +61,10 @@ var playerMove = function(x,y) {
     render();
     checkVictory();
     if (victory === true) {
+        wins++;
         document.getElementById('title').innerHTML=
             'You Win! <button onclick=resetBoard()>Try Again</button>';
-    }
-    if (openSpots.length === 0) {
+    } else if (openSpots.length === 0) {
         document.getElementById('title').innerHTML= 
             'You Tie! <button onclick=resetBoard()>Try Again</button>';
     }
@@ -70,6 +72,7 @@ var playerMove = function(x,y) {
     render();
     checkCompVictory();
     if (compVictory === true) {
+        losses++;
         document.getElementById('title').innerHTML=
             'You Lose! <button onclick=resetBoard()>Try Again</button>';
     }
@@ -98,7 +101,7 @@ var resetBoard = function() {
   ];
   openSpots = ['1x1','1x2','1x3','2x1','2x2','2x3','3x1','3x2','3x3'];
   turnCount = 0;
-  document.getElementById('title').innerHTML= 'This is Tic Tac Toe';
+  document.getElementById('title').innerHTML= 'Wins: ' + wins + ' Losses: ' + losses;
   render();
 };
 
