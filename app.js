@@ -42,16 +42,15 @@ var render = function() {
     }
   }
 };
-/* CONROLLER
+/* CONTROLLER
   This is how the player gives input to the game.
 */
 var playerMove = function(x,y) {
   if ((victory || compVictory) === true) {
       return;
   }
-  console.log('player move start');
   if (model[y][x] === (1 || 2)) {
-    alert("That is an illegal move. Please try again.");
+    return;
   }
   if (model[y][x] === 0) {
     model[y][x] = 1;
